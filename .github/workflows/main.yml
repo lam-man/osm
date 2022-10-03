@@ -57,6 +57,20 @@ jobs:
           version: latest
           skip-pkg-cache: true
 
+  govulncheck:
+    name: Go Vulnerabilities Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version-file: go.mod
+          cache: true
+      - name: go version check
+        run: go version
+
   codegen:
     name: Codegen
     runs-on: ubuntu-latest
